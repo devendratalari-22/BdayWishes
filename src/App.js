@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+import {useState, useEffect} from 'react'
 import './App.css';
 
 function App() {
+
+  const [showGif, SetShowGif] = useState(false);
+
+  const getWishes = () =>{
+    SetShowGif(true)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className='app'>
+      {showGif && (
+        <>
+      <iframe id='wishes' src="https://gifer.com/embed/74US" width={400} height={400} allowfullscreen></iframe>
+      <p>HAPPY BIRTHDAY PRIYUU</p>
+      </>)}
+      <div>
+      <button className="glow-on-hover" type="button" onClick={getWishes}>Wishes Kavalante Click Chey!</button>
+      </div>
+      
+      </div>
+    </>
   );
 }
 

@@ -1,38 +1,123 @@
-.App {
-  text-align: center;
+
+
+.app {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    margin-bottom: 50px;
+   
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+iframe{
+  border: none;
+  align-self: center;
+}
+
+
+
+p {
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+    font-weight: 600;
+    font-style: bold;
+  color: #fff;
+  text-shadow: 
+      0 0 5px rgb(255, 255, 64),
+      0 0 10px #07c233,
+      0 0 20px #fff,
+      0 0 40px #0ff,
+      0 0 80px rgb(170, 29, 183),
+      0 0 90px rgb(12, 187, 41),
+      0 0 100px rgb(244, 31, 215),
+      0 0 150px rgb(16, 160, 18);
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      text-shadow: 
+          0 0 5px rgb(255, 255, 64)
+          0 0 10px #3ed315,
+          0 0 20px #fff,
+          0 0 40px #0ff,
+          0 0 80px rgb(195, 42, 200),
+          0 0 90px rgb(11, 179, 76),
+          0 0 100px rgb(221, 51, 190),
+          0 0 150px rgb(11, 191, 41);
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+  20%, 24%, 55% {
+      text-shadow: none;
   }
 }
